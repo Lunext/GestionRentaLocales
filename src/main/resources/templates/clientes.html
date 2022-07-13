@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Gestion de locales</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/imgstyle.css}"></link>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Locales Cuevas</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a th:href="@{/locales}" class="nav-link font-weight-light ">Control de locales</a>
+
+        </li>
+        <li>
+            <a th:href="@{/horarios}" class="nav-link font-weight-light">Gestion de horarios</a>
+        </li>
+        <li>
+            <a th:href="@{/clientes}" class="nav-link font-weight-light">Gestion de Clientes</a>
+        </li>
+        <li>
+            <a th:href="@{/tiposeventos}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+        <li>
+            <a th:href="@{/empleados}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+
+    </ul>
+</nav>
+
+<br>
+<div class="container-fluid">
+        <div class="container">
+            <h1 class="text-center" >Gestion de clientes</h1>
+        </div>
+    <br/>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{clientes/newss}" class="btn btn-primary btn-sm mb3">Registrar Cliente </a>
+
+            </div>
+
+        </div>
+    <br>
+
+
+    <table class="table">
+        <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+        <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre del cliente</th>
+            <th scope="col">Apellidos del cliente</th>
+            <th scope="col">Email del cliente</th>
+            <th scope="col">Local de preferencia</th>
+            <th scope="col">Horario de preferencia</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente: ${clientes}">
+
+            <td th:text="${cliente.id}">Id</td>
+            <td th:text="${cliente.clientName}">Opening Time</td>
+            <td th:text="${cliente.clientLastName}">Closing Time</td>
+            <td th:text="${cliente.clientEmail}">Given Date</td>
+            <td  th:text="${cliente.local.localName}">Returning Date</td>
+            <td  th:text="${cliente.horario.openingTime}">Local</td>
+
+            <td>
+                <a th:href="@{/clientes/editt/{id}(id=${cliente.id})}" class="btn btn-info">Editar</a>
+                <a th:href="@{/clientes/{id}(id=${cliente.id})}" class="btn btn-danger">Eliminar</a>
+            </td>
+
+
+
+
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+        </body>
+</html>

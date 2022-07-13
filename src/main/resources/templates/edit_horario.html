@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:local="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de locales</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Locales Cuevas</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a th:href="@{/locales}" class="nav-link font-weight-light ">Control de locales</a>
+
+        </li>
+        <li>
+            <a th:href="@{/horarios}" class="nav-link font-weight-light">Control de horarios</a>
+        </li>
+        <li>
+            <a th:href="@{/clientes}" class="nav-link font-weight-light">Gestion de Clientes</a>
+        </li>
+
+        <li>
+            <a th:href="@{/tiposeventos}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+        <li>
+            <a th:href="@{/empleados}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+
+
+    </ul>
+</nav>
+
+<br>
+
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center"> Registrar Horario</h1>
+        <div class="card-body">
+            <form th:action="@{/horarios/{id} (id=${horario.id})}" th:object="${horario}" method="POST">
+                <div class="form-group">
+                    <label>Hora de inicio: </label>
+                    <input type="time" name="localName" th:field="*{openingTime}" class="form-control"
+                           placeholder="Introduzca la hora de inicio" required></input>
+                </div>
+                <div class="form-group">
+                    <label>Hora de finalizacion: </label>
+                    <input type="time" name="closingTime" th:field="*{closingTime}" class="form-control"
+                           placeholder="Introduzca la hora de cierre" required></input>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Fecha de entrega: </label>
+                    <input type="date" name="givenDate" th:field="*{givenDate}" class="form-control"
+                           placeholder="Introduzca la fecha de entrega" required></input>
+                </div>
+                <br>
+
+
+                <div class="form-group">
+                    <label>Fecha de retorno: </label>
+                    <input type="date" name="returnDate" th:field="*{returnDate}" class="form-control"
+                           placeholder="Introduzca la fecha de retorno" required></input>
+                </div>
+
+
+
+
+                <br>
+
+                <div class="box-footer">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

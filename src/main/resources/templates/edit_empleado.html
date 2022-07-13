@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:local="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de locales</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a th:href="@{/locales}" class="nav-link font-weight-light ">Control de locales</a>
+
+        </li>
+        <li>
+            <a th:href="@{/horarios}" class="nav-link font-weight-light">Control de horarios</a>
+        </li>
+        <li>
+            <a th:href="@{/clientes}" class="nav-link font-weight-light">Gestion de Clientes</a>
+        </li>
+        <li>
+            <a th:href="@{/tiposeventos}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+        <li>
+            <a th:href="@{/empleados}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+
+
+    </ul>
+</nav>
+
+<br>
+
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center"> Registrar Empleado</h1>
+        <div class="card-body">
+            <form th:action="@{/empleados/{id} (id=${empleado.id})}" th:object="${empleado}" method="POST">
+
+                <div class="form-group">
+                    <label>Nombre del empleado: </label>
+                    <input type="text" name="employeeName" th:field="*{employeeName}" class="form-control"
+                           placeholder="Introduzca nombre del empleado" required></input>
+                </div>
+                <div class="form-group">
+                    <label>Apellidos del empleado: </label>
+                    <input type="text" name="employeeLastName" th:field="*{employeeLastName}" class="form-control"
+                           placeholder="Introduzca los apellidos del empleado" required></input>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Email del empleado: </label>
+                    <input type="email" name="employeeEmail" th:field="*{employeeEmail}" class="form-control"
+                           placeholder="Introduzca el email del empleado " required></input>
+                </div>
+                <br>
+
+
+                <div class="form-group">
+
+                    <label>Cargo del empleado: </label>
+                    <select th:field="*{employeePosition}" class="form-control" required>
+
+                            <option th:text="Supervisor" th:value="Supervisor">
+                            <option th:text="Gerente" th:value="Gerente">
+                            <option th:text="Secretaria" th:value="Secretaria">
+                            <option th:text="Cajero" th:value="Cajero">
+
+                            </option>
+
+                        <
+
+                    </select>
+                </div>
+
+                <br>
+                <div class="box-footer">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

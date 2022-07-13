@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Gestion de locales</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/imgstyle.css}"></link>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Locales Cuevas</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a th:href="@{/locales}" class="nav-link font-weight-light ">Control de locales</a>
+
+        </li>
+        <li>
+            <a th:href="@{/horarios}" class="nav-link font-weight-light">Gestion de horarios</a>
+        </li>
+        <li>
+            <a th:href="@{/clientes}" class="nav-link font-weight-light">Gestion de Clientes</a>
+        </li>
+        <li>
+            <a th:href="@{/tiposeventos}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+        <li>
+            <a th:href="@{/empleados}" class="nav-link font-weight-light">Gestion de Tipos de Eventos </a>
+        </li>
+
+
+    </ul>
+</nav>
+
+<br>
+<div class="container-fluid">
+        <div class="container">
+            <h1 class="text-center" >Gestion de Tipos de eventos</h1>
+        </div>
+    <br/>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{tiposeventos/newsss}" class="btn btn-primary btn-sm mb3">Registrar tipo de evento </a>
+
+            </div>
+
+        </div>
+    <br>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tipo de evento</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tipoEvento: ${tiposeventos}">
+
+            <td th:text="${tipoEvento.id}">Id</td>
+            <td th:text="${tipoEvento.EventType}">Opening Time</td>
+
+
+            <td>
+                <a th:href="@{/tiposeventos/edittt/{id}(id=${tipoEvento.id})}" class="btn btn-info">Editar</a>
+                <a th:href="@{/tiposeventos/{id}(id=${tipoEvento.id})}" class="btn btn-danger">Eliminar</a>
+            </td>
+
+
+
+
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+        </body>
+</html>
