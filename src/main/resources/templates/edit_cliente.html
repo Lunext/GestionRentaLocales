@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:local="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Gestion de locales</title>
@@ -61,7 +61,25 @@
                 </div>
                 <br>
 
+                <div class="form-group">
+                    <label>Local: </label>
+                    <select th:field="*{local}" class="form-control" required>
+                        <th:block th:each="local: ${localesList}">
+                            <option th:text="${local.localName}" th:value="${local.id}">
+                            </option>
+                        </th:block>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label>Local: </label>
+                    <select th:field="*{horario}" class="form-control" required>
+                        <th:block th:each="Horario: ${horarioList}">
+                            <option th:text="${Horario.closingTime}" th:value="${Horario.id}">
+                            </option>
+                        </th:block>
+                    </select>
+                </div>
 
 
                 <div class="box-footer">

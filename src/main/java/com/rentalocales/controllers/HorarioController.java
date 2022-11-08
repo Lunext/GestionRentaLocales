@@ -54,6 +54,8 @@ public class HorarioController {
 
     @GetMapping("/horarios/editar/{id}")
     public String showEdit(@PathVariable("id") Integer id, Model model){
+        List<Local> localesList=localRepository.findAll();
+        model.addAttribute("localesList", localesList );
         model.addAttribute("horario", horarioService.getHorarioById(id));
         return "edit_horario";
     }
@@ -67,7 +69,8 @@ public class HorarioController {
         existingHorario.setClosingTime(horario.getClosingTime());
         existingHorario.setGivenDate(horario.getGivenDate());
         existingHorario.setReturnDate(horario.getReturnDate());
-        model.addAttribute("localesList", localesList );
+        existingHorario.setLocal(horario.getLocal());
+        model.addAttribute("localesList", localesList);
 
         horarioService.updateHorario(existingHorario);
 

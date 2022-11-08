@@ -84,6 +84,10 @@ public class ClienteController {
 
     @GetMapping("/clientes/editt/{id}")
     public String showEdit(@PathVariable("id") Integer id, Model model){
+        List<Local> localesList=localRepository.findAll();
+        List<Horario> horarioList =horarioRepository.findAll();
+        model.addAttribute("localesList",localesList);
+        model.addAttribute("horarioList", horarioList);
         model.addAttribute("cliente", clienteService.getClienteById(id));
         return "edit_cliente";
     }
@@ -91,14 +95,16 @@ public class ClienteController {
     @PostMapping("/clientes/{id}")
     public String updateClienteInfo(@PathVariable Integer id, @ModelAttribute("cliente") Cliente cliente, Model model){
         List<Local> localesList=localRepository.findAll();
-        List<Horario> horariosList=horarioRepository.findAll();
+        List<Horario> horarioList=horarioRepository.findAll();
         Cliente existingCliente= clienteService.getClienteById(id);
         existingCliente.setId(id);
         existingCliente.setClientName(cliente.getClientName());
         existingCliente.setClientLastName(cliente.getClientLastName());
         existingCliente.setClientEmail(cliente.getClientEmail());
+        existingCliente.setLocal(cliente.getLocal());
+        existingCliente.setHorario(cliente.getHorario());
         model.addAttribute("localesList", localesList );
-        model.addAttribute("horariosList",horariosList);
+        model.addAttribute("horariosList",horarioList);
 
         clienteService.updateCliente(existingCliente);
 
